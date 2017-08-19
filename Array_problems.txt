@@ -1,0 +1,473 @@
+1. Write a JavaScript program which accept a number as input and insert dashes (-) between each two even numbers. 
+For example if you accept 025468 the output should be 0-254-6-8
+function func(number1){
+  var myString=number1.toString();
+  var myarray=myString.split(',');
+  var result=[];
+  result[0]=myarray[0];
+       for(var i=0;i<=myarray.length;i++){
+    if((myarray[i]%2 == 0) && (myarray[i+1]%2 == 0)){
+      result.push('-',myarray[i+1])
+    }
+    else{
+    result.push(myarray[i+1]);
+    }
+  }
+  console.log(result.join());
+}
+------------------------------------------------------------------------------------------------------
+2. Write a JavaScript program to find the most frequent item of an array. 
+Sample array : var arr1=[3, 'a', 'a', 'a', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
+
+Sol: function getRepeatElement(array){
+  var mf=1;
+   var item;
+  var m=0;
+  for(var i=0;i<array.length;i++){
+    for(var j=0;j<array.length;j++){
+      if(array[i] == array[j]){
+        m++;
+        if(mf<m){
+          mf=m;
+          item=array[i];
+        }
+      }
+    }
+    m=0;
+  }
+  console.log(item +' repeated '+mf+' times');
+}
+-----------------------------------------------------------------------------------------------------------
+3. Write a JavaScript program which accept a string as input and swap the case of each character. For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'.
+Sol: function func(str){
+var UPPER = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var LOWER = 'abcdefghijklmnopqrstuvwxyz';
+var result = [];
+  
+  for(var x=0; x<str.length; x++)
+  {
+    if(UPPER.indexOf(str[x]) !== -1)
+    {
+      result.push(str[x].toLowerCase());
+    }
+    else if(LOWER.indexOf(str[x]) !== -1)
+    {
+      result.push(str[x].toUpperCase());
+    }
+    else 
+    {
+      result.push(str[x]);
+    }
+  }
+console.log(result.join(''));
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+4. Write a JavaScript program 
+which prints the elements of the following array. Go to the editor
+Note : Use nested for loops.
+Sample array : var a = [[1, 2, 1, 24], [8, 11, 9, 4], [7, 0, 7, 27], [7, 4, 28, 14], [3, 10, 26, 7]];
+
+Sol: function arrangeElement(array){
+  array.forEach(function(item,index){
+    console.log('row '+index);
+    item.forEach(function(item){
+      console.log(item);
+    })
+  })
+}
+
+arrangeElement([[1,2,3,4],[5,6,7,8]]);
+
+----------------------------------------------------------------------------------------------------------------
+5. Write a JavaScript program to find the sum of squares of a numeric vector
+
+Sol: function getSquares(array){
+  var result=array.map(function(item){
+    return item*item;
+  })
+  console.log(result);
+}
+  
+
+getSquares([1,2,3,4]);
+
+---------------------------------------------------------------------------------------------------------------
+
+6. Write a JavaScript program to remove duplicate items from an array
+
+Sol: function removeDuplicate(array){
+  var m=0;
+  var mf=1;
+  var array1=array;
+  for(var i=0;i<array.length;i++){
+        for(var j=0;j<array1.length;j++){
+      if(array[i] == array1[j]){
+        m++;
+        if(mf < m){
+          array1.splice(j,1);
+          console.log(array1);
+        }
+         
+      }
+          
+    }
+    m=0;
+  }
+  array=array1;
+  console.log(array);
+}
+
+removeDuplicate([1,2,1,2,3,4,3,44,5,6,9,'a','A']);
+--------------------------------------------------------------------------------------
+7. Find the leap years in a given range of years
+
+Sol: function getLeapYear(array){
+  var result=array.filter(function(item){ 
+return ((item%4) == '0')
+  })
+  console.log(result);
+}
+
+
+getLeapYear([2000,20001,2004,2006]);
+-----------------------------------------------------------------------------------------------
+
+8. write a function to remove duplicates in a array
+sol:
+function removeDuplicatesameArray(arr){
+  var newArray=arr.filter(function(element,index){
+    return (arr.indexOf(element) == index)
+  })
+return newArray
+  }
+
+function removeDulicate(arr1,arr2,callback){
+  var newArray=[];
+arr1.forEach(function(element){
+  if(arr2.indexOf(element)== -1){
+    newArray.push(element);
+  }
+})
+arr2.forEach(function(element){
+  if(arr1.indexOf(element) == -1){
+    newArray.push(element);
+  }
+})
+
+newArray=newArray.concat(arr1);
+ newArray= callback(newArray);
+console.log(newArray.sort());
+}
+
+removeDulicate([0,1,2,3],[4,5,3,2],removeDuplicatesameArray);
+-----------------------------------------------------------------------
+9. write a function to return an array by removng specific element
+Sol:
+function removeSpecificElement(arr1,number){
+  var newArray=arr1.filter(function(element){
+    return (element !=number)
+  })
+return newArray;
+  }
+
+var a=removeSpecificElement([1,2,3,4,5,6,7,8],5);
+console.log(a);
+-------------------------------------------------------------------
+10. write a function to change the position from one place to another in an array
+sol:
+function removeElement(arr,orig,change){
+  var a=arr[orig];
+  arr.splice(orig,1);
+  arr.splice(change,0,a);
+  
+ console.log(arr);
+}
+
+removeElement([0,1,2,3,4],2,0);
+-------------------------------------------------------------------------------
+11. Write a function to get seqence of numbers from one value to some count
+sol:
+function getSequence(init,end){
+  var newArray=[];
+  for(var i=0;i<end;i++){
+    newArray.push(init+i);
+  }
+  console.log(newArray);
+}
+
+getSequence(1,100);
+-----------------------------------------------------------
+12.Write a JavaScript function to generate an array between two integers of 1 step length
+Sol:
+function getSequence(init,end){
+  var newArray=[];
+  for(var i=init;i<=end;i++){
+    newArray.push(i);
+  }
+  console.log(newArray);
+}
+
+getSequence(-6,5);
+--------------------------------------------------------------------------------
+13. write a function to find missing numbers in an array which contains numbers from 1-100
+sol:
+function toFindMissing(arr){
+var newArray=getSequence(100);
+  
+  var a=newArray.filter(function(element){
+    return (arr.indexOf(element)==-1)
+  })
+  console.log(a);
+}
+
+function getSequence(number){
+    var newArray=[];
+  for(var i=1;i<=number;i++){
+    newArray.push(i);
+  }
+  return newArray;
+}
+
+toFindMissing([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22,23,24,25,26,
+              27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,45,46,47,48,49,50,51,52,
+              53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,
+              76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100]);
+----------------------------------------------------------------------------
+14.write a function to get the highest number from an array
+sol:
+var a=[1,2,3,4,5];
+var n=0;
+  var b=[];
+a.reduce(function(prev,curr){
+  if(curr > prev){
+    n++;
+ b[n]=curr;
+  return curr
+  } else if(prev > curr){
+    n++;
+       b[n]=prev;
+   return prev;
+  } 
+  console.log(b);
+})
+----------------------------------------------------------------
+15. write a function to get second highest number from the given array.
+Sol:
+function getSecondHighest(arr){
+  var newArray=[];
+
+  var a=getHighest(arr);
+  
+  a=arr.filter(function(element){
+    return (element !=a)
+  })
+  
+return (getHighest(a))
+}
+
+
+function getHighest(arr){
+    var a=arr.reduce(function(prev,curr){
+    if(curr > prev){
+      return curr
+    } else if(prev > curr){
+      return prev
+    }
+  })
+    return a
+}
+
+var a=getSecondHighest([11,22,33,44,55,66,77,88,99]);
+console.log(a);
+---------------------------------------------------------------------------------
+16. write a function to get the duplicates from an array.
+Sol:
+function getDuplicate(arr){
+  var a=arr.filter(function(element,index){
+    return (arr.indexOf(element) !=index)
+  })
+
+  return a
+}
+
+var b=getDuplicate([1,2,3,4,5,5,2,3]);
+  console.log(b);
+--------------------------------------------------------------
+17. write a function to check a number is there or not:
+Sol:
+function getResult(arr,num){
+ return (arr.indexOf(num) == -1)? false : true;
+}
+
+var a=getResult([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17],55);
+console.log(a);
+------------------------------------------------------------------
+18. write a function to get smallest number from an array
+Sol:
+function getLeastNumber(arr){
+  return (arr.reduce(function(prev,curr){
+    if(curr < prev){
+      return curr
+    } else if(prev < curr){
+      return prev
+    }else{
+      return curr
+    }
+  }))
+}
+
+var a=getLeastNumber([0,1,2,3,3,4,5,-1,6,353,545,343,11,2,-77]);
+console.log(a);
+------------------------------------------------------------------
+19. write a function to get the sum of two numbers is equal to the given number
+Sol:
+function getSum(arr,num){
+  var newArray=[];
+  arr.reduce(function(prev,curr){
+    if((prev + curr) === num ){
+      newArray.push([prev,curr]);
+    }
+    return curr
+  })
+  console.log(newArray);
+}
+
+getSum([20,30,10,40,20,50,40,10],50);
+---------------------------------------------------------
+http://javarevisited.blogspot.in/2015/06/top-20-array-interview-questions-and-answers.html  
+
+20. write a function to check given number is prime or not
+Sol:
+function checkPrimeNumber(n){
+if(n === 1){
+  return false
+}  else if(n === 2){
+  return true
+} else{
+  for(var i =2;i<n;i++){
+    if(n%i == 0){
+      return false
+    } 
+  }
+  return true
+}
+}
+
+var a=checkPrimeNumber(19);
+console.log(a)
+-------------------------------------------------------------------------------
+21.write a function to sort the array in desc order
+sol:
+function toGetHighest(arr){
+ var a=arr.reduce(function(prev,curr){
+   if(curr > prev){
+     return curr
+   } else if(prev > curr){
+     return prev
+   } else{
+     return curr
+   }
+  
+ })
+  return a
+ console.log(a);
+}
+
+function toSortDesc(arr){
+  var newArray=[];
+  var len=arr.length
+  for(var i=1;i<=len;i++){
+   var a= toGetHighest(arr);
+  newArray.push(a);
+    var b=arr.indexOf(a);
+    arr.splice(b,1)
+    console.log(arr);
+  }
+  console.log(newArray)
+}
+
+toSortDesc([5,4,2,3,1,6])
+-----------------------------------------------------------------------------
+22.write a function to sort the given array in asc order
+Sol:
+function toGetHighest(arr){
+ var a=arr.reduce(function(prev,curr){
+   if(curr < prev){
+     return curr
+   } else if(prev < curr){
+     return prev
+   } else{
+     return curr
+   }
+  
+ })
+  return a
+ console.log(a);
+}
+
+function toSortDesc(arr){
+  var newArray=[];
+  var len=arr.length
+  for(var i=1;i<=len;i++){
+   var a= toGetHighest(arr);
+  newArray.push(a);
+    var b=arr.indexOf(a);
+    arr.splice(b,1)
+    console.log(arr);
+  }
+  console.log(newArray)
+}
+
+toSortDesc([12,45,23,65,1,3,45,2])
+---------------------------------------------------------------------------------------------
+
+23. write a function to get the factorial of a given number
+Sol:
+/*function toGetFactorial(num){
+  var m=1;
+  if(num==0){
+    return 1
+  }else{
+    for(var i=1;i<=num;i++){
+      m=m*i;
+    }
+    return m;
+  }
+}
+
+var a=toGetFactorial(5);
+
+console.log(a)*/
+
+function factorial(x) 
+{ 
+
+  if (x === 0)
+ {
+    return 1;
+ }
+  return x * factorial(x-1);
+         
+}
+console.log(factorial(5));
+---------------------------------------------------------------
+24.write a function to get the range b/w the numbers
+Sol:
+ function range(start_num, end_num) 
+{
+  if (end_num - start_num === 2) 
+  {
+    return [start_num + 1];
+  } 
+  else 
+  {
+    var list = range(start_num, end_num - 1);
+    list.push(end_num - 1);
+    return list;
+  }
+};
+
+
+console.log(range(2,9))
+-------------------------------------------------------------------------
